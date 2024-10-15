@@ -1,0 +1,49 @@
+.btn-success {
+    color: white;
+    background-color: rgb(221, 129, 144);
+    margin: 5px;
+    border: 1px solid rgb(255, 20, 147);
+    border-radius: 5px;
+}
+
+.btn-success:hover {
+    background-color: rgb(255, 105, 180);
+    border-color: rgb(221, 20, 147);
+    transition: 2s ease all;
+    transform: scale(1.1);
+}
+
+.btn-success:active {
+    background-color: rgb(255, 20, 147);
+    border-color: rgb(255, 255, 255);
+}
+
+
+.btn-info {
+    color: black; /* Color del texto */
+    background-color: rgb(255, 255, 255); /* Color de fondo claro */
+    border: 2px solid rgb(255, 20, 147); /* Borde rosa */
+    border-radius: 5px; /* Bordes redondeados (opcional) */
+    margin-top: 5px; /* Espacio entre botones */
+    transition: background-color 0.3s, border-color 0.3s; /* Transición suave */
+}
+
+.btn-info:hover {
+    background-color: rgb(238, 209, 255); /* Color rosa para hover */
+    border-color: rgb(124, 20, 221); /* Cambiar el borde al pasar el ratón */
+}
+
+.btn-info:active {
+    background-color: rgb(255, 255, 255); /* Color rosa más oscuro para clic */
+    border-color: rgb(255, 105, 180); /* Cambiar el borde al hacer clic */
+}
+
+.navbar {
+    background-color: #d6a4e0; /* Color lila */
+}
+
+.navbar-brand {
+    color: white; /* Color del texto */
+    width: 100%; /* Ocupa el ancho completo */
+    text-align: center; /* Centrar texto */
+}
