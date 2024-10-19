@@ -1,6 +1,6 @@
 <?php
 require_once "config.php";
-header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: application/json; charset=utf-8');
 
 if($_POST){
     $action=$_REQUEST['action'];
@@ -47,13 +47,13 @@ if($_POST){
 
                        $promedio= $cx->query("SELECT AVG(edad) AS promedio FROM datos ");
                        $row6= $promedio->fetch_assoc();
-                        $valido["promedio"]=$row6;
+                        $valido["promedio"]=$row6['promedio'];
 
 
 
                         $suma= $cx->query("SELECT SUM(edad) AS suma FROM datos");
                         $row7=$suma->fetch_assoc();
-                        $valido["suma"]=$row7;
+                        $valido["suma"]=$row7['suma'];
 
 
 
