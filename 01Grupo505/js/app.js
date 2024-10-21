@@ -12,7 +12,7 @@ const cargarGrupo = async () => {
     // Datos en Cards
     resHTML += `<div class="card"><h3>DATOS</h3><div class="card-body">`;
     json.datos.map(r => {
-        resHTML += `<p>${r.id} - ${r.nombre} ${r.ap} ${r.am} (${r.fecha}) - ${r.municipio} - ${r.color} - ${r.comida} - ${r.signo} - ${r.pelicula} - ${r.equipo}</p>`;
+        resHTML += `<p>${r.id} - ${r.nombre} ${r.ap} ${r.am} (${r.fecha}) - ${r.municipio} - ${r.color} - ${r.comida} - ${r.signo} - ${r.pelicula} - ${r.equipo} - ${r.edad}</p>`;
     });
     resHTML += `</div></div>`;
 
