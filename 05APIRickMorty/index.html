@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API DE RICK & MORTY</title>
+   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="text-center">
+
+    <nav class="navbar" style="background-color: #000000;">
+        <div class="container-fluid">
+          <h1 class="m-auto w-100 text-white">RICK & MORTY API</h1>
+          <img src="img/rickmorty.jpg" alt="Logo" width="85" height="85" style="border-radius: 100%;" class="d-inline-block align-text-top m-auto mb-3">
+        </div>
+      </nav>
+<br>
+    
+
+    <div class="container">
+        <h2 class="mt-4" style="color:white;">PÁGINA
+            <select name="pagina" id="pagina" class="form-control d-inline" style="width: 40px;" onchange="apiRick(this.value)">
+                <script>
+                    for (let i = 1; i <= 42; i++) {
+                        document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+            </select>
+        </h2>
+        
+        <div id="resultado" class="row">
+           
+        </div>
+    </div>
+
+   <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Artistas y Canciones</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnm0CqbT1WI1j8LyTjo7mOUSt.JsKC4p0pQbqy17RrhN7ud19RwbKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css">
+   
+    
+    <script src="app2.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Buscador de Canciones</a>
+                <a class="navbar-brand" href="index.html">Rick AND Morty</a>
+                <a class="navbar-brand" href="index3.html">Recetas</a>
+            </div>
+        </nav>
+    </div>
+    <div class="bg-info">
+        <div id="msj-error"></div>
+        
+        <div class="container">
+            <div class="row">
+                <form class="col card text-white bg-transparent mb-5 pt-5 pb-2">
+                    <fieldset>
+                        <legend class="text-center">Buscador Letras Canciones</legend>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Artista</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="artista"
+                                        id="artista"
+                                        value="Karol G"
+                                        placeholder="Nombre Artista"
+                                    />
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Canción</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="cancion"
+                                        id="cancion"
+                                        value="Tusa"
+                                        placeholder="Nombre Canción"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button
+                            type="button"
+                            onclick="cargarDatos()"
+                            class="btn btn-primary float-right"
+                        >Buscar</button>
+                    </fieldset>
+                </form>
+            </div>
+            
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6" id="divArtista"></div>
+                    <div class="col-md-6" id="divCancion"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+body {
+    background:rgb(63, 22, 99);
+}
+h1{
+    font-size: 35px;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+}
+.nav-link:hover {
+    color: #ffd3f0 !important;
+}
+.container {
+    margin-top: 15px;
+    max-width: 1000px; 
+}
+#resultado {
+    margin-top: 15px;
+}
+.card {
+    border: none;
+    transition: transform 0.2s;
+    margin-bottom: 20px;  
+}
+.card:hover {
+    transform: scale(1.05);
+    background-color: hsl(146, 100%, 66%);
+    color: rgb(255, 255, 255);
+}
+.card-img-top {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
