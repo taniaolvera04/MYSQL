@@ -8,11 +8,7 @@ const cargarDatos = async () => {
         return;
     }
     const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artista)}/${encodeURIComponent(cancion)}`;
-   // const url2 = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${encodeURIComponent(artista)}`;
-   // let url2 = `https://www.theaudiodb.com/api/v1/json/523532/search.php?s=${encodeURIComponent(artista)}`;
-
-  //  const url = `https://api.lyrics.ovh/v1/${artista}/${cancion}`;
-   // let url2=`https://www.theaudiodb.com/api/v1/json/523532/search.php?s=${artista}`;
+  
     const url2 = `https://www.theaudiodb.com/api/v1/json/1/search.php?s=${artista}`;
   
 

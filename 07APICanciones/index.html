@@ -7,24 +7,17 @@
     <title>Artistas y Canciones</title>
     
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnm0CqbT1WI1j8LyTjo7mOUSt.JsKC4p0pQbqy17RrhN7ud19RwbKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css">
-   
-    
-    <script src="app2.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Buscador de Canciones</a>
-                <a class="navbar-brand" href="index.html">Rick AND Morty</a>
-                <a class="navbar-brand" href="index3.html">Recetas</a>
-            </div>
-        </nav>
-    </div>
+    <nav class="navbar" style="background-color: #c393a1;">
+        <div class="container-fluid">
+          <h1 class="m-auto w-100 text-white">API CANCIONES</h1>
+           </div>
+      </nav>
+<br>
     <div class="bg-info">
         <div id="msj-error"></div>
         
@@ -37,13 +30,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Artista</label>
+                                    <label>ARTISTA</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control text-center"
                                         name="artista"
                                         id="artista"
-                                        value="Karol G"
+                                        value="BTS"
                                         placeholder="Nombre Artista"
                                     />
                                 </div>
@@ -51,13 +44,13 @@
                             
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Canción</label>
+                                    <label>CANCIÓN</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        class="form-control text-center"
                                         name="cancion"
                                         id="cancion"
-                                        value="Tusa"
+                                        value="Butter"
                                         placeholder="Nombre Canción"
                                     />
                                 </div>
@@ -81,6 +74,8 @@
             </div>
         </div>
     </div>
+
+    <script src="js/app.js"></script>
 </body>
 
 </html>
