@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACORDEÓN DE RAZAS DE PERRO</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+     
+        /* Estilos para el acordeón */
+        .accordion-button {
+            background-color: #FFB6C1; /* Rosa pastel */
+            color: #4B0082; /* Morado oscuro para el texto */
+            border-radius: 0.5em; /* Bordes redondeados */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #FF69B4; /* Rosa intenso cuando está expandido */
+            color: white; /* Texto blanco */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+        }
+
+        .accordion-button:hover {
+            background-color: #FF85B3; /* Rosa brillante al pasar el mouse */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más intensa al hover */
+        }
+
+        .btn-primary {
+            border: none;
+            width: 15em;
+            height: 3em;
+            border-radius: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #1C1A1C;
+            cursor: pointer;
+            transition: all 450ms ease-in-out;
+        }
+
+        .btn-primary .text {
+            font-weight: 600;
+            color: #AAAAAA;
+            font-size: medium;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(0deg, #A47CF3, #683FEA);
+            box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                        inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                        0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                        0px 0px 180px 0px #9917FF;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover .text {
+            color: white;
+        }
+    </style>
+</head>
+<body class="text-center">
+    <!-- Navbar -->
+    <nav class="navbar" style="background-color: #d4a5fd;">
+        <div class="container-fluid">
+            <h1 class="m-auto w-100 text-white" style="font-size:30px;">ACORDEÓN DE RAZAS DE PERRO</h1>
+            <img src="../img/puppy.png" alt="Logo" width="85" height="85" style="border-radius: 100%;" class="d-inline-block align-text-top m-auto mb-3">
+        </div>
+    </nav>
+
+    <br>
+
+    <!-- Botones de navegación -->
+    <button class="btn btn-primary d-inline-block mx-2" onclick="window.location.href='index.html';">IMÁGENES RANDOM RAZAS</button>
+    <button class="btn btn-primary d-inline-block mx-2" onclick="window.location.href='slimg.html';">SLIDER IMÁGENES</button>
+    <button class="btn btn-primary d-inline-block mx-2" onclick="window.location.href='srazas.html';">SELECT RAZAS</button>
+    <br>
+
+    <!-- Acordeón de Razas -->
+    <div class="accordion" id="accordion">
+        <!-- Las razas se cargarán aquí dinámicamente -->
+    </div>
+
+    <script>
+        async function fetchBreeds() {
+            try {
+                const response = await fetch('https://dog.ceo/api/breeds/list/all');
+                const data = await response.json();
+                const breeds = data.message;
+                generateAccordion(breeds);
+            } catch (error) {
+                console.error('Error al obtener las razas:', error);
+            }
+        }
+
+        function generateAccordion(breeds) {
+            const accordion = document.getElementById('accordion');
+            for (const [breed, subBreeds] of Object.entries(breeds)) {
+                const subBreedCount = subBreeds.length;
+                const subBreedList = subBreeds.length > 0 ? `<ul class="list-group">${subBreeds.map(sub => `<li class="list-group-item">${sub}</li>`).join('')}</ul>` : 'No hay subrazas';
+                const accordionItem = `
+                    <div class="card">
+                        <div class="card-header" id="heading-${breed}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link accordion-button" type="button" data-toggle="collapse" data-target="#collapse-${breed}" aria-expanded="true" aria-controls="collapse-${breed}">
+                                    ${breed.charAt(0).toUpperCase() + breed.slice(1)} (${subBreedCount} subrazas)
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapse-${breed}" class="collapse" aria-labelledby="heading-${breed}" data-parent="#accordion">
+                            <div class="card-body">
+                                ${subBreedList}
+                            </div>
+                        </div>
+                    </div>`;
+                accordion.innerHTML += accordionItem;
+            }
+        }
+
+        // Llamar a la función para obtener las razas al cargar la página
+        fetchBreeds();
+    </script>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

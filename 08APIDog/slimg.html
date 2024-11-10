@@ -3,33 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sliders de Imágenes de Perros</title>
+    <title>SLIDERS DE IMAGENES DE PERRO</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa; /* Color de fondo gris claro */
-        }
+    
         #dogImage {
             width: 300px;
             height: auto;
             margin: 10px;
-            border: 2px solid #dc3545; /* Borde rojo */
+            border: 2px solid #FF69B4; /* Borde rosa */
+            border-radius: 10%;
+        }
+
+        .btn-primary {
+            border: none;
+            width: 15em;
+            height: 3em;
+            border-radius: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #1C1A1C;
+            cursor: pointer;
+            transition: all 450ms ease-in-out;
+        }
+  
+        .btn-primary .text {
+            font-weight: 600;
+            color: #AAAAAA;
+            font-size: medium;
+        }
+  
+        .btn-primary:hover {
+            background: linear-gradient(0deg, #A47CF3, #683FEA);
+            box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                        inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                        0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                        0px 0px 180px 0px #9917FF;
+            transform: translateY(-2px);
+        }
+  
+        .btn-primary:hover .text {
+            color: white;
+        }
+
+        /* Estilos para los botones centrados */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Estilo para la navbar */
+        nav {
+            background-color: #fda5e5;
+        }
+
+        nav .navbar-brand {
+            font-size: 30px;
+            color: white;
         }
     </style>
 </head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center">Imágenes Aleatorias de Perros</h1>
+<body class="text-center">
+    <!-- Navbar -->
+    <nav class="navbar" style="background-color: #96d5d5;">
+        <div class="container-fluid">
+            <h1 class="m-auto w-100 text-white" style="font-size:30px;">IMAGEN RANDOM DE  CON SLIDERS</h1>
+            <img src="../img/puppy.png" alt="Logo" width="85" height="85" style="border-radius: 100%;" class="d-inline-block align-text-top m-auto mb-3">
+          </div>
+    </nav>
 
+    <!-- Contenedor principal -->
+    <div class="container mt-5">
+       
         <label for="imageCount">Cantidad de imágenes (1-50): <span id="imageCountLabel">1</span></label>
         <input type="range" id="imageCount" min="1" max="50" value="1" class="form-control-range" onchange="updateImageCount()">
 
         <label for="changeInterval">Intervalo de cambio (5-60 segundos): <span id="intervalLabel">5</span>s</label>
         <input type="range" id="changeInterval" min="5" max="60" value="5" class="form-control-range" onchange="updateInterval()">
 
-        <button id="startButton" class="btn btn-danger btn-block mt-3" onclick="startSlideshow()">Iniciar Slideshow</button>
+        <button id="startButton" class="btn btn-warning btn-block mt-3 text-white" onclick="startSlideshow()">INICIAR SLIDESHOW</button>
 
         <div id="imagesContainer" class="text-center mt-3"></div>
+    </div>
+
+    <!-- Botones centrados -->
+    <div class="btn-container">
+        <button class="btn btn-primary mx-2" onclick="window.location.href='arazas.html';">ACORDEÓN RAZAS</button>
+        <button class="btn btn-primary mx-2" onclick="window.location.href='index.html';">RANDOM IMÁGENES</button>
+        <button class="btn btn-primary mx-2" onclick="window.location.href='srazas.html';">SELECT RAZAS</button>
     </div>
 
     <script>

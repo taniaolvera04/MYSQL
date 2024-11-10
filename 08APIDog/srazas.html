@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciona una Raza de Perro</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>SELECT DE RAZAS DE PERRO</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #f8f9fa; /* Color de fondo gris claro */
+            background-color: #f8f9fa;
         }
         #dogImage {
             width: 500px;
@@ -16,19 +16,68 @@
             margin: 20px auto;
             border: 2px solid #333;
         }
+        .btn-primary {
+            border: none;
+            width: 15em;
+            height: 3em;
+            border-radius: 3em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            background: #1C1A1C;
+            cursor: pointer;
+            transition: all 450ms ease-in-out;
+        }
+        .btn-primary .text {
+            font-weight: 600;
+            color: #AAAAAA;
+            font-size: medium;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(0deg, #A47CF3, #683FEA);
+            box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                        inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                        0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                        0px 0px 180px 0px #9917FF;
+            transform: translateY(-2px);
+        }
+        .btn-primary:hover .text {
+            color: white;
+        }
+        #breedSelect {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        #breedSelect option {
+            text-align: center;
+            text-transform: uppercase;
+        }
     </style>
 </head>
-<body>
+<body class="text-center">
+
+    <nav class="navbar" style="background-color: #7fd67f;">
+        <div class="container-fluid">
+            <h1 class="m-auto w-100 text-white" style="font-size:30px;">SELECT DE RAZAS DE PERRO</h1>
+            <img src="../img/puppy.png" alt="Logo" width="85" height="85" style="border-radius: 100%;" class="d-inline-block align-text-top m-auto mb-3">
+        </div>
+    </nav>
+
     <div class="container mt-5">
-        <h1 class="text-center">Selecciona una Raza de Perro</h1>
         <div class="form-group">
-            <label for="breedSelect">Raza:</label>
+            <label for="breedSelect"><b>RAZA:</b></label><br>
             <select id="breedSelect" class="form-control" onchange="fetchRandomDogImage()">
-                <option value="">Selecciona una raza</option>
+                <option value="" class="form-control w-50 m-auto text-center"> — SELECCIONA UNA RAZA —</option>
             </select>
         </div>
         <img id="dogImage" src="" alt="Imagen de perro" style="display: none;">
     </div>
+    <br>
+
+    <button class="btn btn-primary d-inline-block mx-2" onclick="window.location.href='arazas.html';">ACORDEÓN RAZAS</button>
+    <button class="btn btn-primary d-inline-block mx-2" onclick="window.location.href='index.html';">RANDOM IMÁGENES</button>
+    <button class="btn btn-primary d-inline-block mx-2" onclick="window.location.href='srazas.html';">SELECT RAZAS</button>
 
     <script>
         async function fetchBreeds() {
@@ -67,11 +116,10 @@
                     console.error('Error al obtener la imagen:', error);
                 }
             } else {
-                dogImage.style.display = 'none'; // Ocultar la imagen si no hay raza seleccionada
+                dogImage.style.display = 'none'; 
             }
         }
 
-        // Llamar a la función para obtener las razas al cargar la página
         fetchBreeds();
     </script>
 
