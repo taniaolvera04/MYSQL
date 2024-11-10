@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acordeón de Razas de Perros</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Color de fondo gris claro */
+        }
+        .accordion-button {
+            background-color: #dc3545; /* Color rojo */
+            color: white;
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: #c82333; /* Color rojo más oscuro cuando está expandido */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Acordeón de Razas de Perros</h1>
+        <div id="accordion" class="mt-4"></div>
+    </div>
+
+    <script>
+        async function fetchBreeds() {
+            try {
+                const response = await fetch('https://dog.ceo/api/breeds/list/all');
+                const data = await response.json();
+                const breeds = data.message;
+                generateAccordion(breeds);
+            } catch (error) {
+                console.error('Error al obtener las razas:', error);
+            }
+        }
+
+        function generateAccordion(breeds) {
+            const accordion = document.getElementById('accordion');
+            for (const [breed, subBreeds] of Object.entries(breeds)) {
+                const subBreedCount = subBreeds.length;
+                const subBreedList = subBreeds.length > 0 ? `<ul class="list-group">${subBreeds.map(sub => `<li class="list-group-item">${sub}</li>`).join('')}</ul>` : 'No hay subrazas';
+                const accordionItem = `
+                    <div class="card">
+                        <div class="card-header" id="heading-${breed}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link accordion-button" type="button" data-toggle="collapse" data-target="#collapse-${breed}" aria-expanded="true" aria-controls="collapse-${breed}">
+                                    ${breed.charAt(0).toUpperCase() + breed.slice(1)} (${subBreedCount} subrazas)
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapse-${breed}" class="collapse" aria-labelledby="heading-${breed}" data-parent="#accordion">
+                            <div class="card-body">
+                                ${subBreedList}
+                            </div>
+                        </div>
+                    </div>`;
+                accordion.innerHTML += accordionItem;
+            }
+        }
+
+        // Llamar a la función para obtener las razas al cargar la página
+        fetchBreeds();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

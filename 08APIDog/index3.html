@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona una Raza de Perro</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Color de fondo gris claro */
+        }
+        #dogImage {
+            width: 500px;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Selecciona una Raza de Perro</h1>
+        <div class="form-group">
+            <label for="breedSelect">Raza:</label>
+            <select id="breedSelect" class="form-control" onchange="fetchRandomDogImage()">
+                <option value="">Selecciona una raza</option>
+            </select>
+        </div>
+        <img id="dogImage" src="" alt="Imagen de perro" style="display: none;">
+    </div>
+
+    <script>
+        async function fetchBreeds() {
+            try {
+                const response = await fetch('https://dog.ceo/api/breeds/list/all');
+                const data = await response.json();
+                const breeds = data.message;
+                populateBreedSelect(breeds);
+            } catch (error) {
+                console.error('Error al obtener las razas:', error);
+            }
+        }
+
+        function populateBreedSelect(breeds) {
+            const breedSelect = document.getElementById('breedSelect');
+            for (const breed in breeds) {
+                const option = document.createElement('option');
+                option.value = breed;
+                option.textContent = breed.charAt(0).toUpperCase() + breed.slice(1);
+                breedSelect.appendChild(option);
+            }
+        }
+
+        async function fetchRandomDogImage() {
+            const breedSelect = document.getElementById('breedSelect');
+            const breed = breedSelect.value;
+            const dogImage = document.getElementById('dogImage');
+
+            if (breed) {
+                try {
+                    const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`);
+                    const data = await response.json();
+                    dogImage.src = data.message;
+                    dogImage.style.display = 'block'; // Mostrar la imagen
+                } catch (error) {
+                    console.error('Error al obtener la imagen:', error);
+                }
+            } else {
+                dogImage.style.display = 'none'; // Ocultar la imagen si no hay raza seleccionada
+            }
+        }
+
+        // Llamar a la función para obtener las razas al cargar la página
+        fetchBreeds();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
