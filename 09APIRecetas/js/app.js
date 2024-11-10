@@ -1,17 +1,14 @@
 const obtenerCategorias=async()=>{
 
     const url=`https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list`; 
-    //console.log(url);
-    
     const response= await axios.get(url);
-    //console.log(response);
     
     let selectCategorias= document.querySelector("#categoria");
     
-    let selectHTML=`<option value="">- Selecciona Categoria -</option>`;
+    let selectHTML=`<option value="" class="form-control text-center">— Selecciona una categoría— </option>`;
 
     response.data.drinks.map(drink=>{
-        selectHTML+= `<option value="${drink.strCategory}">${drink.strCategory}</option>`;
+        selectHTML+= `<option value="${drink.strCategory}" class="form-control text-center">${drink.strCategory}</option>`;
 
     });
     
@@ -32,11 +29,9 @@ const obtenerCategorias=async()=>{
         }
         
         const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingrediente}&c=${categoria}`;
-        //console.log(url);
-
+       
         const response= await axios.get(url);
-        //console.log(response);
-
+       
         let divListadoRecetas= document.querySelector("#divListadoRecetas");
         let listadoHTML=`<div class="row mt-5">`;
         response.data.drinks.map(drink=>{
@@ -46,8 +41,12 @@ const obtenerCategorias=async()=>{
            <h2 class="card-header">${drink.strDrink}</h2>
            <img class="card-img-top" src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
            <div class="card-body">
-          <button type="button" class="btn btn-primary" onclick="verReceta(${drink.idDrink})" data-bs-toggle="modal" data-bs-target="#modalReceta">
+          <button type="button" class="btn btn-primary m-auto" onclick="verReceta(${drink.idDrink})" data-bs-toggle="modal" data-bs-target="#modalReceta">
        VER RECETA
+       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+</svg>
 </button>
            </div>
         </div>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+    <title>API BEBIDAS</title>
+</head>
+
+<body onload="obtenerCategorias()" class="text-center">
+
+  <nav class="navbar" style="background-color: #ffc6f0;">
+    <div class="container-fluid">
+      <h1 class="m-auto w-100 text-white" style="font-size:30px;">BUSCADOR DE BEBIDAS</h1>
+      <img src="../img/bebida.png" alt="Logo" width="80" height="85" class="d-inline-block align-text-top m-auto mb-3">
+    </div>
+  </nav>
+<br>
+
+<div id="msj-error"></div>
+    <div class="container-fluid">
+
+           
+
+            <div class="card text-center w-50 m-auto mt-3 shadow bg-body-tertiary">
+                <div class="row">
+                    <div class="col m-2">
+                        <input type="text" id="nombre" name="nombre" class="form-control text-center" placeholder="Buscar ingrediente">
+                        <br>
+                        <select name="categoria" id="categoria" class="form-control">
+
+                        </select>
+                        <br>
+                        <button onclick="obtenerRecetas()" class="form-control btn btn-primary m-auto">BUSCAR BEBIDA  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
+                          <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018"/>
+                          <path d="M13 6.5a6.47 6.47 0 0 1-1.258 3.844q.06.044.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11"/>
+                        </svg></button>
+                    </div>
+                </div>
+            </div>
+<br><br>
+        </div>
+
+        <div id="divListadoRecetas">
+
+        </div>
+
+
+
+
+  <div class="modal fade" id="modalReceta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="tituloReceta"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h3 class="mt-4">INSTRUCCIONES</h3>
+            <p id="instruccionesReceta"> </p>
+    
+            <img class="img-fluid my-4" src="" id="imagenReceta"/>
+
+            <h3>InNGREDIENTES Y CANTIDADES</h3>
+            <ul id="ingredientesReceta"> </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">CERRAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+   <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+  
+  </body>
+</html>

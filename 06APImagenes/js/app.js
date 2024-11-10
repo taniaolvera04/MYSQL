@@ -3,7 +3,8 @@ const cargarImagenes = async () => {
 
     if (input === "") {
         Swal.fire({
-            title: "Falta rellenar campos",
+            icon: "warning",
+            title: "TIENES CAMPOS VACÍOS",
             showCancelButton: false,
             confirmButtonText: "Salir",
         })
