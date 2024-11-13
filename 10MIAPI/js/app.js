@@ -10,6 +10,7 @@ const cargarFilms = async () => {
     divRes.innerHTML = ""; 
 
     data.map(ghibli => {
+        
         const divItem = document.createElement('div');
         divItem.classList.add('col-md-3'); 
         divItem.innerHTML = `
@@ -26,13 +27,16 @@ const cargarFilms = async () => {
                     <p class="card-text"><b>DURACIÓN:</b> ${ghibli.running_time} minutos</p>  
                     <p class="card-text"><b>DIRECTOR:</b> ${ghibli.director}</p>
                     <p class="card-text"><b>PRODUCTOR:</b> ${ghibli.producer}</p>
-                    <button type="button" class="btn btn-primary m-auto" onclick="verReceta(${drink.idDrink})" data-bs-toggle="modal" data-bs-target="#modalReceta">
-       VER RECETA
-       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-</svg>
-</button>
+                     
+    <button class="btn btn-light m-auto" onclick="verDesc('${ghibli.id}')" data-bs-toggle="modal" data-bs-target="#mostrarDesc">
+    <b>DESCRIPCIÓN
+     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
+        <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z"/>
+      </svg></b>
+      </button>
+      <br>
+
+
              </div>   
 
             </div>
@@ -41,5 +45,18 @@ const cargarFilms = async () => {
     });
 };
 
-//ghibli.movie_banner
-//<img src="${ghibli.movie_banner}" class="card-img-top" alt="${ghibli.movie_banner}">
+
+const verDesc = async (id) => {
+    let url = `https://ghibliapi.vercel.app/films/${id}`;
+    const api = await fetch(url);
+    const ghibli = await api.json();
+    
+   
+    let titulo = document.querySelector("#titulo");
+    let desc = document.querySelector("#descfilm");
+    let imagen = document.querySelector("#imgfilm");
+
+    titulo.innerHTML = ghibli.title;
+    desc.innerHTML = ghibli.description;
+    imagen.src = ghibli.movie_banner;  
+};
